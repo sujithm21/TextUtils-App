@@ -36,14 +36,14 @@ export default function TextForm(props) {
         <div className="mb-3">
         <textarea className="form-control" value ={text} onChange = {handleonChange} style={{backgroundColor :props.mode === 'light'? 'white':'grey',color :props.mode === 'light'? 'grey':'white'}} id="mybox" rows="7"></textarea>
         </div>
-        <button className="btn btn-primary mx-3" onClick = {handleUpclick}>Convert to Uppercase</button>
-        <button className="btn btn-primary" onClick = {handleLowclick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-3 my-1" onClick = {handleUpclick}>Convert to Uppercase</button>
+        <button className="btn btn-primary mx-3 my-1" onClick = {handleLowclick}>Convert to Lowercase</button>
         <button type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
     </div>
 
     <div className='container mb-6' >
         <h2>Your Text Summary</h2>
-        <p>{text.split(" ").length}words and {text.length}characters </p>
+        <p>{text.split(/\s+/).filter((element) => {return element.length!==0}).length}words and {text.length}characters </p>
         <p>It will take {0.008 * text.split(" ").length} Minutes to read</p>
         <h2>Preview</h2>
         <p>{text}</p>
